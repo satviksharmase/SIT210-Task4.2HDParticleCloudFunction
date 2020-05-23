@@ -1,0 +1,61 @@
+int ledyellow = D6;
+int ledgreen = D5;
+int ledorange = D4;
+
+void setup()
+{
+   pinMode(ledyellow, OUTPUT);
+   pinMode(ledgreen, OUTPUT);
+   pinMode(ledorange, OUTPUT);
+   
+   Particle.function("led",ledToggle);
+   
+   digitalWrite(ledyellow, LOW);
+   digitalWrite(ledgreen, LOW);
+   digitalWrite(ledgreen, LOW);
+}
+
+
+void loop()
+{
+}
+
+
+int ledToggle(String command) 
+{
+
+    if (command=="yellow LED on") 
+    {
+        digitalWrite(ledyellow,HIGH);
+        return 1;
+    }
+    else if (command=="yellow LED off") 
+    {
+        digitalWrite(ledyellow,LOW);
+        return 0;
+    }
+    else if (command=="green LED on") 
+    {
+        digitalWrite(ledgreen,HIGH);
+        return 1;
+    }
+    else if (command=="green LED off") 
+    {
+        digitalWrite(ledgreen,LOW);
+        return 0;
+    }
+    else if (command=="orange LED on") 
+    {
+        digitalWrite(ledorange,HIGH);
+        return 1;
+    }
+    else if (command=="orange LED off") 
+    {
+        digitalWrite(ledorange,LOW);
+        return 0;
+    }
+    else 
+    {
+        return -1;
+    }
+}
